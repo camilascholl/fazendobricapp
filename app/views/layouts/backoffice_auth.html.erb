@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Acesso Backoffice | Fazendo Bric" %></title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
+    <%= stylesheet_link_tag "fontawesome-free/css/all.min", "data-turbo-track": "reload" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+  </head>
+
+  <body class="bg-gradient-primary">
+    <main class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
+      <div class="row justify-content-center w-100">
+        <div class="col-xl-9 col-lg-10 col-md-11">
+          <div class="card o-hidden border-0 shadow-lg">
+            <div class="card-body p-0">
+              <div class="row no-gutters">
+                <div class="col-lg-5 d-none d-lg-flex bg-dark text-white">
+                  <div class="p-5 d-flex flex-column justify-content-between w-100">
+                    <div>
+                      <div class="text-uppercase small text-white-50 mb-3">Fazendo Bric</div>
+                      <h1 class="h2 text-white mb-3">Backoffice</h1>
+                      <p class="mb-0 text-white-50">Gerencie acessos, contas e recursos internos com uma interface dedicada.</p>
+                    </div>
+                    <div class="small text-white-50">
+                      <i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>
+                      Ambiente restrito para administradores.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-7">
+                  <div class="p-5">
+                    <% flash.each do |type, message| %>
+                      <% alert_class = type.to_s == "notice" ? "success" : "danger" %>
+                      <div class="alert alert-<%= alert_class %>" role="alert"><%= message %></div>
+                    <% end %>
+
+                    <%= yield %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-white-50 small mt-4 mb-0">&copy; <%= Time.current.year %> Fazendo Bric</p>
+        </div>
+      </div>
+    </main>
+
+    <%= javascript_importmap_tags %>
+  </body>
+</html>

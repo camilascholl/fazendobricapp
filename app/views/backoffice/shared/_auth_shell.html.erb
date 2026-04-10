@@ -1,0 +1,10 @@
+<% content_for :title, page_title %>
+
+<div class="text-center mb-4">
+  <h2 class="h3 text-gray-900 mb-2"><%= heading %></h2>
+  <% if local_assigns[:subtitle].present? %>
+    <p class="text-muted mb-0"><%= subtitle %></p>
+  <% end %>
+</div>
+
+<%= yield %>

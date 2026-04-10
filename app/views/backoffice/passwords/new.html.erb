@@ -1,0 +1,18 @@
+<%= render layout: "backoffice/shared/auth_shell", locals: {
+  page_title: "Recuperar senha | Backoffice",
+  heading: "Recuperar acesso",
+  subtitle: "Informe o e-mail do administrador para receber as instruções."
+} do %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "user" }) do |f| %>
+    <%= render "backoffice/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-user", placeholder: "E-mail" %>
+    </div>
+
+    <%= f.submit "Enviar instruções", class: "btn btn-primary btn-user btn-block" %>
+  <% end %>
+
+  <hr>
+  <%= render "backoffice/shared/links" %>
+<% end %>

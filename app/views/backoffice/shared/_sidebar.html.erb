@@ -1,0 +1,35 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <li class="nav-item">
+    <%= link_to backoffice_dashboard_path, class: "sidebar-brand d-flex align-items-center justify-content-center" do %>
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-tools" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">Fazendo Bric</div>
+    <% end %>
+  </li>
+
+  <hr class="sidebar-divider my-0">
+
+  <li class="nav-item <%= current_page?(backoffice_dashboard_path) ? "active" : nil %>">
+    <%= link_to backoffice_dashboard_path, class: "nav-link" do %>
+      <i class="fas fa-fw fa-tachometer-alt" aria-hidden="true"></i>
+      <span>Dashboard</span>
+    <% end %>
+  </li>
+
+  <hr class="sidebar-divider">
+
+  <li class="nav-item px-3">
+    <span class="sidebar-heading d-block px-0">Área administrativa</span>
+    <div class="text-white-50 small">Sessão ativa de <%= current_admin.email %></div>
+  </li>
+
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <li class="nav-item px-3">
+    <%= button_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-light btn-sm btn-block", form_class: "mb-0" do %>
+      <i class="fas fa-sign-out-alt mr-1" aria-hidden="true"></i>
+      Sair
+    <% end %>
+  </li>
+</ul>
