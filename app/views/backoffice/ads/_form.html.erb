@@ -1,0 +1,32 @@
+<%= form_with model: [:backoffice, ad], class: "backoffice-form" do |form| %>
+  <% if ad.errors.any? %>
+    <div class="backoffice-alert backoffice-alert--danger">
+      <strong>Não foi possível salvar o anúncio.</strong>
+      <ul class="backoffice-errors">
+        <% ad.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="backoffice-form__group">
+    <%= form.label :title, "Título", class: "backoffice-form__label" %>
+    <%= form.text_field :title, class: "backoffice-form__input", maxlength: 255, autofocus: true %>
+  </div>
+
+  <div class="backoffice-form__group">
+    <%= form.label :category_id, "Categoria", class: "backoffice-form__label" %>
+    <%= form.collection_select :category_id, @categories, :id, :description, { prompt: "Selecione uma categoria" }, { class: "backoffice-form__input" } %>
+  </div>
+
+  <div class="backoffice-form__group">
+    <%= form.label :description, "Descrição", class: "backoffice-form__label" %>
+    <%= form.text_area :description, rows: 6, class: "backoffice-form__input backoffice-form__input--textarea" %>
+  </div>
+
+  <div class="backoffice-actions">
+    <%= form.submit class: "backoffice-button" %>
+    <%= link_to "Voltar", backoffice_ads_path, class: "backoffice-button backoffice-button--ghost" %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<%= form_with model: [:backoffice, category], class: "backoffice-form" do |form| %>
+  <% if category.errors.any? %>
+    <div class="backoffice-alert backoffice-alert--danger">
+      <strong>Não foi possível salvar a categoria.</strong>
+      <ul class="backoffice-errors">
+        <% category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="backoffice-form__group">
+    <%= form.label :description, "Descrição", class: "backoffice-form__label" %>
+    <%= form.text_field :description, class: "backoffice-form__input", maxlength: 60, autofocus: true %>
+  </div>
+
+  <div class="backoffice-actions">
+    <%= form.submit class: "backoffice-button" %>
+    <%= link_to "Voltar", backoffice_categories_path, class: "backoffice-button backoffice-button--ghost" %>
+  </div>
+<% end %>

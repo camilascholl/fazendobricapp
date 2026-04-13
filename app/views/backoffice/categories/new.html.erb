@@ -1,0 +1,13 @@
+<% content_for :title, "Nova categoria | Backoffice" %>
+
+<section class="backoffice-hero">
+  <div>
+    <span class="backoffice-eyebrow">Criar</span>
+    <h2 class="backoffice-hero__title">Nova categoria</h2>
+    <p class="backoffice-hero__text">Cadastre uma categoria para agrupar anúncios no site.</p>
+  </div>
+</section>
+
+<section class="backoffice-panel">
+  <%= render "form", category: @category %>
+</section>

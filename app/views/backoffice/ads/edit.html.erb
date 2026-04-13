@@ -1,0 +1,13 @@
+<% content_for :title, "Editar anúncio | Backoffice" %>
+
+<section class="backoffice-hero">
+  <div>
+    <span class="backoffice-eyebrow">Editar</span>
+    <h2 class="backoffice-hero__title"><%= @ad.title %></h2>
+    <p class="backoffice-hero__text">Atualize os dados do anúncio selecionado.</p>
+  </div>
+</section>
+
+<section class="backoffice-panel">
+  <%= render "form", ad: @ad %>
+</section>

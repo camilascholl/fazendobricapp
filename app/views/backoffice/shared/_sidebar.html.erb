@@ -4,27 +4,37 @@
         <i class="fas fa-tools" aria-hidden="true"></i>
     </div>
     <div>
-      <div class="backoffice-sidebar__brand-name">Fazendo Bric</div>
+      <div class="backoffice-sidebar__brand-name">App Fazendo Bric</div>
       <div class="backoffice-sidebar__brand-subtitle">Painel interno</div>
     </div>
   <% end %>
 
   <div class="backoffice-sidebar__section">
-    <span class="backoffice-sidebar__section-label">Navegação</span>
+    <span class="backoffice-sidebar__section-label">Painel</span>
 
     <%= link_to backoffice_dashboard_path, class: ["backoffice-sidebar__link", ("is-active" if current_page?(backoffice_dashboard_path))].compact.join(" ") do %>
       <i class="fas fa-compass" aria-hidden="true"></i>
-      <span>Visão pública</span>
+      <span>Dashboard</span>
+    <% end %>
+
+    <%= link_to backoffice_categories_path, class: ["backoffice-sidebar__link", ("is-active" if controller_name == "categories")].compact.join(" ") do %>
+      <i class="fas fa-tags" aria-hidden="true"></i>
+      <span>Categorias</span>
+    <% end %>
+
+    <%= link_to backoffice_ads_path, class: ["backoffice-sidebar__link", ("is-active" if controller_name == "ads")].compact.join(" ") do %>
+      <i class="fas fa-bullhorn" aria-hidden="true"></i>
+      <span>Anúncios</span>
     <% end %>
   </div>
 
   <div class="backoffice-sidebar__section backoffice-sidebar__section--note">
-    <span class="backoffice-sidebar__section-label">Estado do acesso</span>
+    <span class="backoffice-sidebar__section-label">Sessão</span>
     <div class="backoffice-sidebar__note">
-      Você está vendo a visualização pública do backoffice.
+      Logado como <strong><%= current_admin&.email %></strong>.
     </div>
     <div class="backoffice-sidebar__note">
-      O modo administrativo fica separado e atualmente está sem autenticação ativa.
+      <%= link_to "Sair", admin_logout_path, data: { turbo_method: :delete, turbo_confirm: "Encerrar a sessão administrativa?" }, class: "backoffice-sidebar__link" %>
     </div>
   </div>
 </aside>

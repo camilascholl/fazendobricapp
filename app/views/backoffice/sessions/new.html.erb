@@ -1,0 +1,55 @@
+<% content_for :title, "Login Admin | Fazendo Bric" %>
+
+<section class="backoffice-auth-card">
+  <div class="backoffice-auth-card__panel">
+    <span class="backoffice-eyebrow">Login do Administrador</span>
+    <h1 class="backoffice-auth-card__title">Entrar no painel</h1>
+    <p class="backoffice-auth-card__text">
+      Acesse o painel administrativo com seu e-mail e senha.
+    </p>
+
+    <div class="backoffice-auth-card__highlights">
+      <div>
+        <strong>Gestão</strong>
+        <span>Categorias e Anúnicos do site.</span>
+      </div>
+      <div>
+        <strong>Painel</strong>
+        <span>Visual para mudança de Categorias e Anúncios do site.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="backoffice-auth-card__form-wrap">
+    <% flash.each do |type, message| %>
+      <% alert_class = type.to_s == "notice" ? "backoffice-alert--success" : "backoffice-alert--danger" %>
+      <div class="backoffice-alert <%= alert_class %>" role="alert"><%= message %></div>
+    <% end %>
+
+    <%= form_with url: admin_path, class: "backoffice-form" do |form| %>
+      <div class="backoffice-form__group">
+        <%= form.label :email, "E-mail", class: "backoffice-form__label" %>
+        <%= form.email_field :email, class: "backoffice-form__input", autocomplete: "email", placeholder: "admin@fazendobric.com", autofocus: true, value: params[:email] %>
+      </div>
+
+      <div class="backoffice-form__group">
+        <%= form.label :password, "Senha", class: "backoffice-form__label" %>
+        <%= form.password_field :password, class: "backoffice-form__input", autocomplete: "current-password", placeholder: "Sua senha" %>
+      </div>
+
+      <div class="backoffice-auth-card__form-meta">
+        <label class="backoffice-auth-card__checkbox">
+          <%= check_box_tag :remember_me, "1", false %>
+          <span>Lembrar do acesso</span>
+        </label>
+
+        <span class="backoffice-auth-card__hint">*Acesso restrito ao administrador.</span>
+      </div>
+
+      <div class="backoffice-actions">
+        <%= form.submit "Logar", class: "backoffice-button" %>
+        <%= link_to "Voltar ao site", root_path, class: "backoffice-button backoffice-button--ghost" %>
+      </div>
+    <% end %>
+  </div>
+</section>

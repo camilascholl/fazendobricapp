@@ -1,0 +1,36 @@
+<% content_for :title, "Categoria | Backoffice" %>
+
+<section class="backoffice-hero">
+  <div>
+    <span class="backoffice-eyebrow">Detalhes</span>
+    <h2 class="backoffice-hero__title"><%= @category.description %></h2>
+    <p class="backoffice-hero__text">Esta categoria possui <%= @category.ads.count %> anúncio(s) vinculados.</p>
+  </div>
+
+  <div class="backoffice-actions">
+    <%= link_to "Editar", edit_backoffice_category_path(@category), class: "backoffice-button" %>
+    <%= link_to "Voltar", backoffice_categories_path, class: "backoffice-button backoffice-button--ghost" %>
+  </div>
+</section>
+
+<section class="backoffice-grid backoffice-grid--two">
+  <article class="backoffice-card">
+    <div class="backoffice-card__header">
+      <div>
+        <span class="backoffice-card__label">Descrição</span>
+        <h3 class="backoffice-card__title"><%= @category.description %></h3>
+      </div>
+      <i class="fas fa-tags backoffice-card__icon" aria-hidden="true"></i>
+    </div>
+  </article>
+
+  <article class="backoffice-card">
+    <div class="backoffice-card__header">
+      <div>
+        <span class="backoffice-card__label">Relacionamentos</span>
+        <h3 class="backoffice-card__title"><%= @category.ads.count %> anúncios</h3>
+      </div>
+      <i class="fas fa-bullhorn backoffice-card__icon" aria-hidden="true"></i>
+    </div>
+  </article>
+</section>

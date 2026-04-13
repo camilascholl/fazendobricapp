@@ -1,0 +1,13 @@
+<% content_for :title, "Novo anúncio | Backoffice" %>
+
+<section class="backoffice-hero">
+  <div>
+    <span class="backoffice-eyebrow">Criar</span>
+    <h2 class="backoffice-hero__title">Novo anúncio</h2>
+    <p class="backoffice-hero__text">Cadastre um anúncio vinculando-o a uma categoria existente.</p>
+  </div>
+</section>
+
+<section class="backoffice-panel">
+  <%= render "form", ad: @ad %>
+</section>

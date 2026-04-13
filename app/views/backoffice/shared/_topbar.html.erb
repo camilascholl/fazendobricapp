@@ -1,17 +1,17 @@
 <nav class="backoffice-topbar">
   <div>
-    <h1 class="backoffice-topbar__title">Dashboard do backoffice</h1>
-    <p class="backoffice-topbar__subtitle">Visualização aberta da estrutura administrativa.</p>
+    <h1 class="backoffice-topbar__title">Dashboard</h1>
+    <p class="backoffice-topbar__subtitle">Gerenciamento como Administrador.</p>
   </div>
 
   <div class="backoffice-topbar__status">
     <div class="backoffice-status-card">
-      <span class="backoffice-status-card__label">Modo atual</span>
-      <strong class="backoffice-status-card__value">Acesso público</strong>
+      <span class="backoffice-status-card__label">Status</span>
+      <strong class="backoffice-status-card__value">Administrador</strong>
     </div>
     <div class="backoffice-status-card">
-      <span class="backoffice-status-card__label">Modo administrativo</span>
-      <strong class="backoffice-status-card__value">Sem login ativo</strong>
+      <span class="backoffice-status-card__label">Usuário</span>
+      <strong class="backoffice-status-card__value"><%= current_admin&.email || "Sessão indisponível" %></strong>
     </div>
   </div>
 </nav>

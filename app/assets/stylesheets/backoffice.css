@@ -167,8 +167,12 @@
 
 .backoffice-status-card__label,
 .backoffice-card__label,
-.backoffice-eyebrow {
+ {
   color: var(--backoffice-muted);
+}
+
+.backoffice-eyebrow {
+  color: #ffffff;
 }
 
 .backoffice-status-card__value {
@@ -282,12 +286,259 @@
   flex-wrap: wrap;
 }
 
+.backoffice-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.backoffice-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: var(--backoffice-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.backoffice-button--secondary {
+  background: var(--backoffice-success);
+}
+
+.backoffice-button--ghost {
+  background: transparent;
+  border-color: var(--backoffice-line);
+  color: var(--backoffice-ink);
+}
+
+.backoffice-panel {
+  border: 1px solid var(--backoffice-line);
+  background: var(--backoffice-surface);
+  box-shadow: var(--backoffice-shadow);
+  backdrop-filter: blur(14px);
+  border-radius: 26px;
+  padding: 24px;
+}
+
+.backoffice-panel__header,
+.backoffice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.backoffice-panel__title {
+  margin: 8px 0 0;
+  font-size: 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.backoffice-table-wrap {
+  overflow-x: auto;
+}
+
+.backoffice-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.backoffice-table th,
+.backoffice-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--backoffice-line);
+  text-align: left;
+}
+
+.backoffice-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--backoffice-muted);
+}
+
+.backoffice-table__actions {
+  white-space: nowrap;
+}
+
+.backoffice-inline-link {
+  color: var(--backoffice-primary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 14px;
+}
+
+.backoffice-inline-link--danger {
+  color: #8b3d21;
+}
+
+.backoffice-empty-state {
+  margin: 0;
+  color: var(--backoffice-muted);
+}
+
+.backoffice-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.backoffice-form__label {
+  font-weight: 700;
+}
+
+.backoffice-form__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(58, 45, 31, 0.16);
+  background: #fffdf9;
+  color: var(--backoffice-ink);
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.backoffice-form__input--textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.backoffice-errors {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.backoffice-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.backoffice-auth-body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(247, 197, 94, 0.26), transparent 28%),
+    color: #f7f5ef;
+  color: var(--backoffice-ink);
+  font-family: "Instrument Sans", "Segoe UI", sans-serif;
+}
+
+.backoffice-auth-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.backoffice-auth-card {
+  width: min(1080px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.85fr);
+  background: rgba(255, 251, 245, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 28px 70px rgba(20, 10, 5, 0.28);
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.backoffice-auth-card__panel {
+  padding: 42px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 181, 106, 0.28), transparent 36%),
+    linear-gradient(180deg, rgba(76, 42, 24, 0.98), rgba(43, 23, 16, 0.98));
+  color: #fff8f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.backoffice-auth-card__title {
+  margin: 14px 0 12px;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.backoffice-auth-card__text {
+  margin: 0;
+  max-width: 34ch;
+  line-height: 1.7;
+  color: rgba(255, 241, 228, 0.78);
+}
+
+.backoffice-auth-card__highlights {
+  display: grid;
+  gap: 14px;
+}
+
+.backoffice-auth-card__highlights div {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 241, 228, 0.1);
+}
+
+.backoffice-auth-card__highlights strong,
+.backoffice-auth-card__highlights span {
+  display: block;
+}
+
+.backoffice-auth-card__highlights span {
+  margin-top: 4px;
+  color: rgba(255, 241, 228, 0.72);
+}
+
+.backoffice-auth-card__form-wrap {
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.backoffice-auth-card__form-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.backoffice-auth-card__checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--backoffice-muted);
+}
+
+.backoffice-auth-card__hint {
+  color: var(--backoffice-muted);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 980px) {
   .backoffice-shell {
     grid-template-columns: 1fr;
   }
 
   .backoffice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .backoffice-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .backoffice-auth-card {
     grid-template-columns: 1fr;
   }
 }
@@ -307,5 +558,11 @@
 
   .backoffice-status-card {
     flex: 1 1 180px;
+  }
+
+  .backoffice-auth-shell,
+  .backoffice-auth-card__panel,
+  .backoffice-auth-card__form-wrap {
+    padding: 22px;
   }
 }

@@ -15,3 +15,9 @@ categories.each do |category|
 end
 
 puts "Categorias cadastradas com sucesso!"
+
+puts "Garantindo administrador padrão..."
+admin = Admin.find_or_initialize_by(email: "camilascholl@hotmail.com")
+admin.password = "camila1"
+admin.save!
+puts "Administrador padrão pronto!"

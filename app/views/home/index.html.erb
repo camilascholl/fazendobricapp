@@ -1,14 +1,7 @@
 <% content_for :title, "Fazendo Bric | Marketplace" %>
 
 <% hero_categories = @categories.map { |category| { description: category.description } } %>
-<% if hero_categories.empty? %>
-  <% hero_categories = [
-    { description: "Categoria 1" },
-    { description: "Categoria 2" },
-    { description: "Categoria 3" },
-    { description: "Categoria 4" }
-  ] %>
-<% end %>
+
 
 <% showcase_ads = @featured_ads.map do |ad|
   {
@@ -20,10 +13,10 @@
 end %>
 <% if showcase_ads.empty? %>
   <% showcase_ads = [
-    { title: "Produto 1", description: "Descrição do produto.", category_description: "Categoria do Produto"},
-    { title: "Produto 2", description: "Descrição do produto.", category_description: "Categoria do Produto"},
-    { title: "Produto 3", description: "Descrição do produto.", category_description: "Categoria do Produto"},
-    { title: "Produto 4", description: "Descrição do produto.", category_description: "Categoria do Produto"}
+    { title: "Produto 1", description: "Descrição do produto 01.", category_description: "Categoria 01" },
+    { title: "Produto 2", description: "Descrição do produto 02.", category_description: "Categoria 02" },
+    { title: "Produto 3", description: "Descrição do produto 03.", category_description: "Categoria 03" },
+    { title: "Produto 4", description: "Descrição do produto 04.", category_description: "Categoria 04" }
   ] %>
 <% end %>
 
@@ -44,7 +37,7 @@ end %>
       <nav class="market-actions" aria-label="Acessos">
         <a href="#categorias">Categorias</a>
         <a href="#ofertas">Ofertas</a>
-        <a href="/backoffice/dashboard">Administrador</a>
+        <a href="/admin">Administrador</a>
       </nav>
     </div>
   </header>
@@ -114,22 +107,6 @@ end %>
     </div>
   </section>
 
-  <section class="market-benefits">
-    <div class="market-shell market-benefits__grid">
-      <article class="market-benefit-card">
-        <strong>Card 1</strong>
-        <p>Frase</p>
-      </article>
-      <article class="market-benefit-card">
-        <strong>Card 2</strong>
-        <p>Frase</p>
-      </article>
-      <article class="market-benefit-card">
-        <strong>Card 3</strong>
-        <p>Frase</p>
-      </article>
-    </div>
-  </section>
 
   <section class="market-offers" id="ofertas">
     <div class="market-shell">
@@ -170,6 +147,9 @@ end %>
       </div>
     </div>
   </section>
+</div>
+<footer>
+
 
   <section class="market-banner">
     <div class="market-shell market-banner__inner">
@@ -179,4 +159,4 @@ end %>
       </div>
     </div>
   </section>
-</div>
+</footer>

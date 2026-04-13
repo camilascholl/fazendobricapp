@@ -2,43 +2,13 @@
 
 <section class="backoffice-hero">
   <div>
-    <span class="backoffice-eyebrow">Painel aberto</span>
-    <h2 class="backoffice-hero__title">Visão pública do backoffice</h2>
-    <p class="backoffice-hero__text">A estrutura do painel continua disponível, mas os fluxos de autenticação administrativa foram removidos desta versão.</p>
+     <h2 class="backoffice-hero__title">Administrativo</h2>
+    <p class="backoffice-hero__text">Gerenciamento da área</p>
+    <div class="backoffice-actions">
+      <%= link_to "Categorias", backoffice_categories_path, class: "backoffice-button" %>
+      <%= link_to "Anúncios", backoffice_ads_path, class: "backoffice-button backoffice-button--secondary" %>
+    </div>
   </div>
 </section>
 
-<section class="backoffice-grid">
-  <article class="backoffice-card backoffice-card--success">
-    <div class="backoffice-card__header">
-      <div>
-        <span class="backoffice-card__label">Modo atual</span>
-        <h3 class="backoffice-card__title">Acesso público</h3>
-      </div>
-      <i class="fas fa-eye backoffice-card__icon" aria-hidden="true"></i>
-    </div>
-    <p class="backoffice-card__text">Você está navegando pela versão aberta do dashboard.</p>
-  </article>
 
-  <article class="backoffice-card backoffice-card--warning">
-    <div class="backoffice-card__header">
-      <div>
-        <span class="backoffice-card__label">Modo administrativo</span>
-        <h3 class="backoffice-card__title">Sem login ativo</h3>
-      </div>
-      <i class="fas fa-user-shield backoffice-card__icon" aria-hidden="true"></i>
-    </div>
-    <p class="backoffice-card__text">Recursos autenticados de administração não estão habilitados nesta versão.</p>
-  </article>
-
-  <article class="backoffice-card backoffice-card--primary">
-    <div class="backoffice-card__header">
-      <div>
-        <span class="backoffice-card__label">Conteúdo ativo</span>
-        <h3 class="backoffice-card__title"><%= Ad.count %> anúncios</h3>
-      </div>
-      <i class="fas fa-users-cog backoffice-card__icon" aria-hidden="true"></i>
-    </div>
-    <p class="backoffice-card__text"><%= Category.count %> categorias seguem disponíveis para organizar o marketplace.</p>
-  </article>
-</div>

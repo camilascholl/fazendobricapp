@@ -1,0 +1,37 @@
+<% content_for :title, "Anúncio | Backoffice" %>
+
+<section class="backoffice-hero">
+  <div>
+    <span class="backoffice-eyebrow">Detalhes</span>
+    <h2 class="backoffice-hero__title"><%= @ad.title %></h2>
+    <p class="backoffice-hero__text">Anúncio vinculado à categoria <%= @ad.category.description %>.</p>
+  </div>
+
+  <div class="backoffice-actions">
+    <%= link_to "Editar", edit_backoffice_ad_path(@ad), class: "backoffice-button" %>
+    <%= link_to "Voltar", backoffice_ads_path, class: "backoffice-button backoffice-button--ghost" %>
+  </div>
+</section>
+
+<section class="backoffice-grid backoffice-grid--two">
+  <article class="backoffice-card">
+    <div class="backoffice-card__header">
+      <div>
+        <span class="backoffice-card__label">Categoria</span>
+        <h3 class="backoffice-card__title"><%= @ad.category.description %></h3>
+      </div>
+      <i class="fas fa-tags backoffice-card__icon" aria-hidden="true"></i>
+    </div>
+  </article>
+
+  <article class="backoffice-card">
+    <div class="backoffice-card__header">
+      <div>
+        <span class="backoffice-card__label">Descrição</span>
+        <h3 class="backoffice-card__title">Conteúdo</h3>
+      </div>
+      <i class="fas fa-align-left backoffice-card__icon" aria-hidden="true"></i>
+    </div>
+    <p class="backoffice-card__text"><%= @ad.description %></p>
+  </article>
+</section>

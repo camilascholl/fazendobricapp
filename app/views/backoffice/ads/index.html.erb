@@ -1,0 +1,53 @@
+<% content_for :title, "Anúncios | Backoffice" %>
+
+<section class="backoffice-hero">
+  <div>
+    <span class="backoffice-eyebrow">CRUD</span>
+    <h2 class="backoffice-hero__title">Anúncios</h2>
+    <p class="backoffice-hero__text">Gerencie os anúncios publicados dentro da área administrativa.</p>
+  </div>
+
+  <div class="backoffice-actions">
+    <%= link_to "Novo anúncio", new_backoffice_ad_path, class: "backoffice-button" %>
+  </div>
+</section>
+
+<section class="backoffice-panel">
+  <div class="backoffice-panel__header">
+    <div>
+      <span class="backoffice-eyebrow">Listagem</span>
+      <h3 class="backoffice-panel__title"><%= @ads.count %> anúncios</h3>
+    </div>
+  </div>
+
+  <% if @ads.any? %>
+    <div class="backoffice-table-wrap">
+      <table class="backoffice-table">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Criado em</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ads.each do |ad| %>
+            <tr>
+              <td><%= ad.title %></td>
+              <td><%= ad.category.description %></td>
+              <td><%= l(ad.created_at, format: :short) %></td>
+              <td class="backoffice-table__actions">
+                <%= link_to "Ver", backoffice_ad_path(ad), class: "backoffice-inline-link" %>
+                <%= link_to "Editar", edit_backoffice_ad_path(ad), class: "backoffice-inline-link" %>
+                <%= link_to "Excluir", backoffice_ad_path(ad), data: { turbo_method: :delete, turbo_confirm: "Excluir este anúncio?" }, class: "backoffice-inline-link backoffice-inline-link--danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p class="backoffice-empty-state">Nenhum anúncio cadastrado ainda.</p>
+  <% end %>
+</section>
