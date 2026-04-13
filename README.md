@@ -11,7 +11,6 @@ Este projeto foi criado com o objetivo de praticar desenvolvimento web com Rails
 * Ruby on Rails
 * SQLite3
 * HTML / CSS
-* Bootstrap (se estiver usando)
 * JavaScript
 
 ---
