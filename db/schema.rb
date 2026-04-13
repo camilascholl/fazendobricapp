@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_10_192727) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_13_120000) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -26,12 +26,10 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_10_192727) do
   create_table "ads", force: :cascade do |t|
     t.string "title", limit: 255
     t.text "description"
-    t.integer "member_id", null: false
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_ads_on_category_id"
-    t.index ["member_id"], name: "index_ads_on_member_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -40,18 +38,5 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_10_192727) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "members", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_members_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
-  end
-
   add_foreign_key "ads", "categories"
-  add_foreign_key "ads", "members"
 end

@@ -1,13 +1,11 @@
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.2.0"
 
 
 gem "rails", "~> 7.1.6"
 gem 'rails-i18n', '~> 7.0.1'
 gem 'foreman'
-gem 'devise'
-gem 'devise-i18n'
 gem "sprockets-rails"
 gem "sqlite3", ">= 1.4"
 gem "puma", ">= 5.0"

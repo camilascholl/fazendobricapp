@@ -1,0 +1,311 @@
+:root {
+  --backoffice-bg: #f2ecdf;
+  --backoffice-surface: rgba(255, 251, 245, 0.88);
+  --backoffice-surface-strong: #fffdf8;
+  --backoffice-ink: #1f1a16;
+  --backoffice-muted: #6a6258;
+  --backoffice-line: rgba(58, 45, 31, 0.1);
+  --backoffice-primary: #b5542f;
+  --backoffice-primary-soft: rgba(181, 84, 47, 0.14);
+  --backoffice-success: #2f7a54;
+  --backoffice-warning: #b47a16;
+  --backoffice-shadow: 0 24px 70px rgba(70, 45, 20, 0.12);
+}
+
+.backoffice-body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(247, 197, 94, 0.28), transparent 25%),
+    linear-gradient(180deg, #f8f1e2 0%, var(--backoffice-bg) 100%);
+  color: var(--backoffice-ink);
+  font-family: "Instrument Sans", "Segoe UI", sans-serif;
+}
+
+.backoffice-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+}
+
+.backoffice-sidebar {
+  padding: 28px 22px;
+  background: linear-gradient(180deg, #241710 0%, #3d2417 100%);
+  color: #fff7f0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.backoffice-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.backoffice-sidebar__brand-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #ffb56a, #d46b2d);
+  color: #2d190f;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+}
+
+.backoffice-sidebar__brand-name,
+.backoffice-topbar__title,
+.backoffice-hero__title,
+.backoffice-card__title {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.backoffice-sidebar__brand-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.backoffice-sidebar__brand-subtitle,
+.backoffice-sidebar__section-label,
+.backoffice-status-card__label,
+.backoffice-card__label,
+.backoffice-eyebrow {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.backoffice-sidebar__brand-subtitle,
+.backoffice-sidebar__note {
+  color: rgba(255, 241, 228, 0.7);
+}
+
+.backoffice-sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 241, 228, 0.12);
+}
+
+.backoffice-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.backoffice-sidebar__link:hover,
+.backoffice-sidebar__link.is-active {
+  background: rgba(255, 181, 106, 0.18);
+  transform: translateX(2px);
+}
+
+.backoffice-sidebar__note {
+  line-height: 1.6;
+}
+
+.backoffice-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.backoffice-content {
+  flex: 1;
+  padding: 28px;
+}
+
+.backoffice-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.backoffice-topbar__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.backoffice-topbar__subtitle {
+  margin: 8px 0 0;
+  color: var(--backoffice-muted);
+}
+
+.backoffice-topbar__status {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.backoffice-status-card,
+.backoffice-card,
+.backoffice-alert {
+  border: 1px solid var(--backoffice-line);
+  background: var(--backoffice-surface);
+  box-shadow: var(--backoffice-shadow);
+  backdrop-filter: blur(14px);
+}
+
+.backoffice-status-card {
+  min-width: 190px;
+  border-radius: 20px;
+  padding: 14px 16px;
+}
+
+.backoffice-status-card__label,
+.backoffice-card__label,
+.backoffice-eyebrow {
+  color: var(--backoffice-muted);
+}
+
+.backoffice-status-card__value {
+  display: block;
+  margin-top: 6px;
+}
+
+.backoffice-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.backoffice-alert {
+  padding: 14px 18px;
+  border-radius: 18px;
+}
+
+.backoffice-alert--success {
+  border-color: rgba(47, 122, 84, 0.25);
+  color: #1d5f40;
+}
+
+.backoffice-alert--danger {
+  border-color: rgba(181, 84, 47, 0.28);
+  color: #8b3d21;
+}
+
+.backoffice-hero {
+  border-radius: 30px;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(255, 245, 231, 0.96), rgba(255, 236, 211, 0.9));
+  border: 1px solid rgba(181, 84, 47, 0.12);
+  box-shadow: var(--backoffice-shadow);
+}
+
+.backoffice-eyebrow {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--backoffice-primary-soft);
+}
+
+.backoffice-hero__title {
+  margin: 14px 0 12px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.backoffice-hero__text,
+.backoffice-card__text,
+.backoffice-footer span {
+  color: var(--backoffice-muted);
+  line-height: 1.6;
+}
+
+.backoffice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.backoffice-card {
+  border-radius: 26px;
+  padding: 24px;
+}
+
+.backoffice-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.backoffice-card__title {
+  margin: 8px 0 0;
+  font-size: 1.6rem;
+}
+
+.backoffice-card__text {
+  margin-bottom: 0;
+}
+
+.backoffice-card__icon {
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.22);
+}
+
+.backoffice-card--success {
+  border-color: rgba(47, 122, 84, 0.24);
+}
+
+.backoffice-card--warning {
+  border-color: rgba(180, 122, 22, 0.24);
+}
+
+.backoffice-card--primary {
+  border-color: rgba(181, 84, 47, 0.22);
+}
+
+.backoffice-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 28px 28px;
+}
+
+.backoffice-footer div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 980px) {
+  .backoffice-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .backoffice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .backoffice-content {
+    padding: 18px;
+  }
+
+  .backoffice-topbar {
+    flex-direction: column;
+  }
+
+  .backoffice-topbar__status {
+    width: 100%;
+  }
+
+  .backoffice-status-card {
+    flex: 1 1 180px;
+  }
+}
