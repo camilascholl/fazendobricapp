@@ -1,1 +1,1 @@
-web: rails s -b 0.0.0.0
+web: bin/rails server -p 3000

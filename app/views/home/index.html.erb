@@ -1,131 +1,182 @@
-<div class="container py-5">
-  <div class="row align-items-center mb-5">
-    <div class="col-lg-6 mb-4 mb-lg-0">
-      <span class="badge badge-primary px-3 py-2 mb-3">Fazendo Bric</span>
-      <h1 class="display-4 font-weight-bold text-gray-900 mb-3">Criatividade, organização e produtos para transformar sua rotina.</h1>
-      <p class="lead text-muted mb-4">
-        Uma vitrine simples e elegante para apresentar seus principais produtos, destacar coleções e levar o cliente direto para o que importa.
-      </p>
-      <div class="d-flex flex-wrap">
-        <a href="#produtos" class="btn btn-primary btn-lg mr-3 mb-2">Ver produtos</a>
-        <a href="/backoffice/sign_in" class="btn btn-outline-secondary btn-lg mb-2">Entrar no backoffice</a>
+<% content_for :title, "Fazendo Bric | Marketplace" %>
+
+<% hero_categories = @categories.map { |category| { description: category.description } } %>
+<% if hero_categories.empty? %>
+  <% hero_categories = [
+    { description: "Categoria 1" },
+    { description: "Categoria 2" },
+    { description: "Categoria 3" },
+    { description: "Categoria 4" }
+  ] %>
+<% end %>
+
+<% showcase_ads = @featured_ads.map do |ad|
+  {
+    title: ad.title,
+    description: ad.description,
+    category_description: ad.category&.description,
+
+  }
+end %>
+<% if showcase_ads.empty? %>
+  <% showcase_ads = [
+    { title: "Produto 1", description: "Descrição do produto.", category_description: "Categoria do Produto"},
+    { title: "Produto 2", description: "Descrição do produto.", category_description: "Categoria do Produto"},
+    { title: "Produto 3", description: "Descrição do produto.", category_description: "Categoria do Produto"},
+    { title: "Produto 4", description: "Descrição do produto.", category_description: "Categoria do Produto"}
+  ] %>
+<% end %>
+
+<div class="market-home" id="topo">
+  <header class="market-topbar">
+    <div class="market-shell market-topbar__inner">
+      <a href="/" class="market-brand">
+        <span class="market-brand__badge">F.Bric</span>
+        <span class="market-brand__name">Fazendo Bric</span>
+      </a>
+
+      <form class="market-search" action="#ofertas">
+        <input type="search" placeholder="Busque seu produto aqui..." aria-label="Buscar produtos">
+        <button type="submit">Buscar</button>
+      </form>
+
+
+      <nav class="market-actions" aria-label="Acessos">
+        <a href="#categorias">Categorias</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="/backoffice/dashboard">Administrador</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="market-hero">
+    <div class="market-shell">
+      <div class="market-hero__grid">
+        <div class="market-hero__content">
+          <span class="market-kicker">Título 1</span>
+          <h1>Frase1</h1>
+          <p>Frase2</p>
+
+          <div class="market-hero__cta">
+            <a href="#ofertas" class="market-button market-button--primary">Botão 1</a>
+            <a href="#categorias" class="market-button market-button--ghost">Botão 2</a>
+          </div>
+
+          <div class="market-highlights">
+            <div>
+              <strong><%= @featured_ads.size.positive? ? @featured_ads.size : 120 %>+</strong>
+              <span>Anúncios em destaque</span>
+            </div>
+            <div>
+              <strong><%= @categories.size.positive? ? @categories.size : 8 %></strong>
+              <span>Categorias navegáveis</span>
+            </div>
+            <div>
+              <strong>24h</strong>
+              <span>7 dias da semana</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="market-promo-card">
+          <span class="market-promo-card__tag">Título 1</span>
+          <h2>Frase1</h2>
+          <p>Frase2</p>
+
+          <ul class="market-promo-card__list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </ul>
+        </aside>
       </div>
     </div>
+  </section>
 
-    <div class="col-lg-6">
-      <div class="card border-0 shadow-lg overflow-hidden">
-        <div class="card-body p-5 bg-gradient-primary text-white">
-          <p class="text-uppercase small mb-3 text-white-50">Destaque da semana</p>
-          <h2 class="h1 font-weight-bold text-white mb-3">Colecao artesanal</h2>
-          <p class="mb-4 text-white-50">
-            Produtos selecionados para quem quer praticidade sem abrir mao de personalidade e acabamento caprichado.
-          </p>
+  <section class="market-strip" id="categorias">
+    <div class="market-shell">
+      <div class="market-strip__header">
+        <div>
+          <span class="market-section-label">Título 1</span>
+          <h2>Categorias</h2>
+        </div>
+        <p>Texto 1</p>
+      </div>
 
-          <div class="row">
-            <div class="col-6 mb-3">
-              <div class="bg-white text-dark rounded p-3 h-100">
-                <div class="small text-muted">Produtos</div>
-                <div class="h3 mb-0 font-weight-bold"><%= @products&.count || 3 %></div>
+      <div class="market-category-row">
+        <% hero_categories.each do |category| %>
+          <article class="market-category-chip">
+            <span class="market-category-chip__icon"><%= category[:description].to_s.first&.upcase || "01" %></span>
+            <span><%= category[:description] %></span>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section class="market-benefits">
+    <div class="market-shell market-benefits__grid">
+      <article class="market-benefit-card">
+        <strong>Card 1</strong>
+        <p>Frase</p>
+      </article>
+      <article class="market-benefit-card">
+        <strong>Card 2</strong>
+        <p>Frase</p>
+      </article>
+      <article class="market-benefit-card">
+        <strong>Card 3</strong>
+        <p>Frase</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="market-offers" id="ofertas">
+    <div class="market-shell">
+      <div class="market-offers__header">
+        <div>
+          <span class="market-section-label">Título</span>
+          <h2>Destaques</h2>
+        </div>
+        <a href="#topo" class="market-link">Topo ^</a>
+      </div>
+
+      <div class="market-product-grid">
+        <% showcase_ads.each_with_index do |ad, index| %>
+          <article class="market-product-card">
+            <div class="market-product-card__media market-product-card__media--<%= (index % 4) + 1 %>">
+              <span><%= ad[:category_description] || "Produto" %></span>
+            </div>
+
+            <div class="market-product-card__body">
+              <div class="market-product-card__meta">
+                <span class="market-pill"><%= ad[:category_description] || "Categoria" %></span>
+                <span class="market-rating">4.<%= 8 - (index % 3) %> ★</span>
+              </div>
+
+              <h3><%= ad[:title] %></h3>
+              <p><%= truncate(ad[:description].to_s, length: 120) %></p>
+
+              <div class="market-product-card__footer">
+                <div>
+                  <strong>R$ <%= number_with_precision(39.9 + (index * 18), precision: 2, separator: ",") %></strong>
+                  <span>em ate 6x sem juros</span>
+                </div>
+                <a href="#sabermais" class="market-button market-button--primary">+</a>
               </div>
             </div>
-            <div class="col-6 mb-3">
-              <div class="bg-white text-dark rounded p-3 h-100">
-                <div class="small text-muted">Entrega</div>
-                <div class="h6 mb-0 font-weight-bold">Rapida e segura</div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </article>
+        <% end %>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="row text-center mb-5">
-    <div class="col-md-4 mb-4">
-      <div class="card border-0 shadow-sm h-100">
-        <div class="card-body p-4">
-          <div class="mb-3 text-primary"><i class="fas fa-star fa-2x" aria-hidden="true"></i></div>
-          <h3 class="h5 font-weight-bold">Curadoria</h3>
-          <p class="text-muted mb-0">Selecao de itens com foco em utilidade, estilo e boa apresentacao.</p>
-        </div>
+  <section class="market-banner">
+    <div class="market-shell market-banner__inner">
+      <div>
+        <span class="market-section-label">Título</span>
+        <h2>Frase</h2>
       </div>
     </div>
-
-    <div class="col-md-4 mb-4">
-      <div class="card border-0 shadow-sm h-100">
-        <div class="card-body p-4">
-          <div class="mb-3 text-primary"><i class="fas fa-box-open fa-2x" aria-hidden="true"></i></div>
-          <h3 class="h5 font-weight-bold">Catalogo claro</h3>
-          <p class="text-muted mb-0">Estrutura simples para destacar preco, descricao e chamada de compra.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4">
-      <div class="card border-0 shadow-sm h-100">
-        <div class="card-body p-4">
-          <div class="mb-3 text-primary"><i class="fas fa-shield-alt fa-2x" aria-hidden="true"></i></div>
-          <h3 class="h5 font-weight-bold">Gestao interna</h3>
-          <p class="text-muted mb-0">Painel administrativo separado para manter operacao e vitrine bem organizadas.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex align-items-center justify-content-between mb-4" id="produtos">
-    <div>
-      <h2 class="h3 font-weight-bold text-gray-900 mb-1">Produtos em destaque</h2>
-      <p class="text-muted mb-0">Uma selecao inicial para apresentar sua loja.</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <% if @products.present? %>
-      <% @products.each do |product| %>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body p-4">
-              <span class="badge badge-light mb-3">Produto</span>
-              <h3 class="h5 font-weight-bold text-gray-900"><%= product.name %></h3>
-              <p class="text-primary font-weight-bold h5 mb-3">R$ <%= product.price %></p>
-              <p class="text-muted mb-0"><%= product.description %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-body p-4">
-            <span class="badge badge-light mb-3">Organizacao</span>
-            <h3 class="h5 font-weight-bold text-gray-900">Kit de escritorio criativo</h3>
-            <p class="text-primary font-weight-bold h5 mb-3">R$ 99,90</p>
-            <p class="text-muted mb-0">Itens selecionados para deixar a rotina mais produtiva e visualmente bonita.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-body p-4">
-            <span class="badge badge-light mb-3">Decoracao</span>
-            <h3 class="h5 font-weight-bold text-gray-900">Caixa artesanal multiuso</h3>
-            <p class="text-primary font-weight-bold h5 mb-3">R$ 149,90</p>
-            <p class="text-muted mb-0">Uma peca funcional para compor ambientes e guardar o essencial com charme.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-body p-4">
-            <span class="badge badge-light mb-3">Presente</span>
-            <h3 class="h5 font-weight-bold text-gray-900">Colecao presenteavel</h3>
-            <p class="text-primary font-weight-bold h5 mb-3">R$ 59,90</p>
-            <p class="text-muted mb-0">Sugestao de item versatil para datas especiais e lembrancas personalizadas.</p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  </section>
 </div>

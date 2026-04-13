@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
     root "dashboard#index"
+    get "dashboard", to: "dashboard#index", as: :dashboard
   end
 end

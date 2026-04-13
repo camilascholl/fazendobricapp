@@ -1,19 +1,21 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
   <div>
     <h1 class="h4 mb-0 text-gray-800">Painel administrativo</h1>
-    <p class="mb-0 small text-muted">Área restrita para administradores autenticados.</p>
+    <p class="mb-0 small text-muted">Dashboard do backoffice.</p>
   </div>
 
   <ul class="navbar-nav ml-auto align-items-center">
     <li class="nav-item mr-3 text-right">
-      <span class="d-block text-gray-600 small">Administrador</span>
-      <strong class="text-gray-800"><%= current_admin.email %></strong>
+      <span class="d-block text-gray-600 small"><%= admin_signed_in? ? "Administrador" : "Acesso" %></span>
+      <strong class="text-gray-800"><%= admin_signed_in? ? current_admin.email : "Livre" %></strong>
     </li>
-    <li class="nav-item">
-      <%= button_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-primary btn-sm", form_class: "mb-0" do %>
-        <i class="fas fa-sign-out-alt mr-1" aria-hidden="true"></i>
-        Sair
-      <% end %>
-    </li>
+    <% if admin_signed_in? %>
+      <li class="nav-item">
+        <%= button_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-primary btn-sm", form_class: "mb-0" do %>
+          <i class="fas fa-sign-out-alt mr-1" aria-hidden="true"></i>
+          Sair
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </nav>
