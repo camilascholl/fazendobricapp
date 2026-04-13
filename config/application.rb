@@ -13,12 +13,12 @@ Bundler.require(*Rails.groups)
 
 module Fazendobricapp
   class Application < Rails::Application
-
     config.load_defaults 7.1
 
     config.autoload_lib(ignore: %w(assets tasks))
 
-    config.i18n.default_locale = :'pt-BR'
-
+    config.i18n.default_locale = :"pt-BR"
+    config.time_zone = "America/Sao_Paulo"
+    config.active_record.default_timezone = :utc
   end
 end

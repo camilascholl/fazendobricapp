@@ -5,10 +5,7 @@ class Backoffice::CategoriesController < BackofficeController
     @categories = Category.order(:description)
   end
 
-  def show
-  end
-
-  def new
+   def new
     @category = Category.new
   end
 
@@ -16,14 +13,15 @@ class Backoffice::CategoriesController < BackofficeController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to backoffice_category_path(@category), notice: "Categoria criada com sucesso."
+      redirect_to backoffice_category_path(@category), notice: "Categoria #{@category.description} criada com sucesso."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-  end
+    @category = Category.find(params[:id])
+      end
 
   def update
     if @category.update(category_params)

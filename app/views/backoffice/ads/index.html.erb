@@ -38,9 +38,15 @@
               <td><%= ad.category.description %></td>
               <td><%= l(ad.created_at, format: :short) %></td>
               <td class="backoffice-table__actions">
-                <%= link_to "Ver", backoffice_ad_path(ad), class: "backoffice-inline-link" %>
-                <%= link_to "Editar", edit_backoffice_ad_path(ad), class: "backoffice-inline-link" %>
-                <%= link_to "Excluir", backoffice_ad_path(ad), data: { turbo_method: :delete, turbo_confirm: "Excluir este anúncio?" }, class: "backoffice-inline-link backoffice-inline-link--danger" %>
+                <%= link_to backoffice_category_path(ad), class: "backoffice-inline-link", title: "Ver categoria" do %>
+                  <i class="far fa-eye" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to edit_backoffice_category_path(ad), class: "backoffice-inline-link", title: "Editar categoria" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+                <%= button_to backoffice_category_path(ad), method: :delete, data: { turbo_confirm: "Excluir este anúncio?" }, form: { class: "backoffice-inline-form" }, class: "backoffice-inline-link backoffice-inline-link--danger backoffice-inline-button", title: "Excluir anúncio" do %>
+                  <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                <% end %>
               </td>
             </tr>
           <% end %>

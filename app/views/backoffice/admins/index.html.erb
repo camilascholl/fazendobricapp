@@ -1,0 +1,114 @@
+<% content_for :title, "Administradores | Backoffice" %>
+
+<section class="backoffice-hero">
+  <span class="backoffice-eyebrow">Acesso</span>
+  <h2 class="backoffice-hero__title">Cadastrar novo administrador</h2>
+  <p class="backoffice-hero__text">
+    Crie novos Administradores para acessar o sistema.
+  </p>
+
+
+</section>
+
+<section class="backoffice-grid backoffice-grid--two">
+  <article class="backoffice-card backoffice-card--primary">
+    <span class="backoffice-card__label">Administradores ativos</span>
+    <h3 class="backoffice-card__title"><%= @admins.count %></h3>
+    <p class="backoffice-card__text">Contas com acesso ao ambiente administrativo.</p>
+  </article>
+
+  <article class="backoffice-card backoffice-card--success">
+    <span class="backoffice-card__label">Último cadastro</span>
+    <h3 class="backoffice-card__title"><%= @admins.first&.created_at ? l(@admins.first.created_at, format: :short) : "Nenhum ainda" %></h3>
+    <p class="backoffice-card__text">Acompanhe quando novos acessos são liberados.</p>
+  </article>
+</section>
+
+<section class="backoffice-grid backoffice-grid--two">
+  <article class="backoffice-panel" id="novo-administrador">
+    <div class="backoffice-panel__header">
+      <div>
+        <span class="backoffice-eyebrow">Formulário</span>
+        <h3 class="backoffice-panel__title">Dados do novo administrador</h3>
+      </div>
+    </div>
+
+    <%= form_with model: [:backoffice, @admin], class: "backoffice-form" do |form| %>
+      <% if @admin.errors.any? %>
+        <div class="backoffice-alert backoffice-alert--danger">
+          Não foi possível cadastrar o administrador.
+          <ul class="backoffice-errors">
+            <% @admin.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="backoffice-form__group">
+        <%= form.label :email, "E-mail", class: "backoffice-form__label" %>
+        <%= form.email_field :email, class: "backoffice-form__input", autocomplete: "email", placeholder: "admin@fazendobric.com", autofocus: true %>
+      </div>
+
+      <div class="backoffice-form__group">
+        <%= form.label :password, "Senha", class: "backoffice-form__label" %>
+        <%= form.password_field :password, class: "backoffice-form__input", autocomplete: "new-password", placeholder: "Mínimo de 6 caracteres" %>
+      </div>
+
+      <div class="backoffice-form__group">
+        <%= form.label :password_confirmation, "Confirmar senha", class: "backoffice-form__label" %>
+        <%= form.password_field :password_confirmation, class: "backoffice-form__input", autocomplete: "new-password", placeholder: "Repita a senha informada" %>
+      </div>
+
+      <div class="backoffice-actions">
+        <%= form.submit "Criar administrador", class: "backoffice-button" %>
+      </div>
+    <% end %>
+  </article>
+
+  <article class="backoffice-panel">
+    <div class="backoffice-panel__header">
+      <div>
+        <span class="backoffice-eyebrow">Listagem</span>
+        <h3 class="backoffice-panel__title">Administradores cadastrados</h3>
+      </div>
+    </div>
+
+    <% if @admins.any? %>
+      <div class="backoffice-table-wrap">
+        <table class="backoffice-table">
+          <thead>
+          <tr>
+            <th>E-mail</th>
+            <th>Criado em</th>
+            <th>Atualizado em</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @admins.each do |admin| %>
+            <tr>
+              <td><%= admin.email %></td>
+              <td><%= l(admin.created_at, format: :short) %></td>
+              <td><%= l(admin.updated_at, format: :short) %></td>
+
+              <td class="backoffice-table__actions">
+                <%= link_to edit_backoffice_admin_path(admin),
+                            class: "backoffice-inline-link",
+                            title: "Editar Administrador" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+
+                <%= button_to backoffice_admin_path(admin), method: :delete, data: { turbo_confirm: "Deletar esse Administrador?" }, form: { class: "backoffice-inline-form" }, class: "backoffice-inline-link backoffice-inline-link--danger backoffice-inline-button", title: "Excluir Administrador" do %>
+                  <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="backoffice-empty-state">Nenhum administrador cadastrado ainda.</p>
+    <% end %>
+  </article>
+</section>

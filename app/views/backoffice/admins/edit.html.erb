@@ -1,0 +1,31 @@
+<section class="backoffice-panel">
+  <h1>Editar administrador</h1>
+
+  <%= form_with model: [:backoffice, @admin], local: true do |form| %>
+    <% if @admin.errors.any? %>
+      <div class="backoffice-alert backoffice-alert--danger">
+        <strong>Não foi possível salvar o administrador.</strong>
+        <ul class="backoffice-errors">
+          <% @admin.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="backoffice-form__group">
+      <%= form.label :email, "E-mail", class: "backoffice-form__label" %>
+      <%= form.email_field :email, class: "backoffice-form__input", autofocus: true %>
+    </div>
+
+    <div class="backoffice-form__group">
+      <%= form.label :password, "Nova senha", class: "backoffice-form__label" %>
+      <%= form.password_field :password, class: "backoffice-form__input" %>
+    </div>
+
+    <div class="backoffice-actions">
+      <%= form.submit "Salvar", class: "backoffice-button" %>
+      <%= link_to "Voltar", backoffice_admins_path, class: "backoffice-button backoffice-button--ghost" %>
+    </div>
+  <% end %>
+</section>
